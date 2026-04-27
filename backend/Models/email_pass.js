@@ -15,6 +15,7 @@ const userCredential = new mongoose.Schema(
       type: String,
       required: [true, "Please provide an password"],
     },
+
   },
   {
     timestamps: true,

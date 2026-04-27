@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --black-charcoal: #29241e;
+}
+
+@layer base {
+}
+@layer components {
+}
+@layer utilities {
+}

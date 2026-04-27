@@ -1,25 +1,44 @@
-import { defineConfig } from "vite";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [tailwindcss()],
 
-  // Vite ka source yahan se lega
-  root: "frontend",
+  root: 'frontend',
 
-  // Final build kahan jaayega
   build: {
-    outDir: "../public", // public folder mein CSS + JS
+    outDir: '../public',
     emptyOutDir: true,
+
     rollupOptions: {
       input: {
-        main: "./frontend/main.js", // entry point
+        css: './frontend/input.css',
+        main: './frontend/main.js'
       },
-    },
+      output: {
+        // CSS ko fixed naam de rahe hain
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'styles/style.css';        // hamesha yahi naam
+          }
+          return 'scripts/[name]-[hash][extname]';
+        },
+
+        // JS ke liye bhi fixed naam (yeh line conflict solve karegi)
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'main') {
+            return 'scripts/main.js';         // fixed naam, no hash
+          }
+          return 'scripts/[name]-[hash].js';
+        },
+
+        chunkFileNames: 'scripts/[name]-[hash].js'
+      }
+    }
   },
 
   server: {
     port: 5173,
     strictPort: true,
-  },
+  }
 });

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>After Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-zinc-800">
+    <div class="m-7">
+      <h1 class="text-3xl text-amber-50 font-bold">Below is the Login form</h1>
+    </div>
+    <form action="/login" method="post">
+      <label for="email" class="text-4xl text-amber-50">Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="email"
+        class="text-center text-3xl text-amber-50 border-2 border-zinc-50 rounded-2xl"
+      />
+      <label for="password" class="text-4xl text-amber-50">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="password"
+        class="text-center text-3xl text-amber-50 border-2 border-zinc-50 rounded-2xl"
+      />
+      <button
+        type="submit"
+        class="text-3xl text-amber-500 bg-yellow-400 rounded-2xl font-bold p-5 cursor-pointer"
+      >
+        Signin
+      </button>
+    </form>
+  </body>
+</html>
