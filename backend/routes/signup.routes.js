@@ -6,7 +6,6 @@ import { signupChecker } from "../middlewares/authenticator.js";
 const router = express.Router();
 
 router.get("/signup", async (req, res) => {
-  res.cookie("name", "bagadbilla");
   res.render("signup");
 });
 
