@@ -4,21 +4,13 @@ import credential from "../Models/email_pass.js";
 import { signupChecker } from "../middlewares/authenticator.js";
 import cookieChecker from "../middlewares/cookiechecker.js";
 import cookieGenerator from "../middlewares/cookiemaker.js";
+import signupGetController from "../controllers/singup.get.controller.js";
+import signupPostController from "../controllers/signup.post.controller.js";
 
 const router = express.Router();
 
-router.get("/signup", cookieChecker, async (req, res) => {
-  res.render("signup");
-});
+router.get("/signup", cookieChecker, signupGetController);
 
-router.post("/signup", signupChecker, cookieGenerator, async (req, res) => {
-  const { username, email, password } = req.body;
-  await credential.create({
-    username: username,
-    email: email,
-    password: password,
-  });
-  res.redirect("/greet");
-});
+router.post("/signup", signupChecker, cookieGenerator, signupPostController);
 
 export default router;
