@@ -14,5 +14,13 @@ export default async function cookieGenerator(req, res, next) {
   next();
 }
 
+export async function logout(req, res, next) {
+  if (req.cookies) {
+    const token = req.cookies.key;
+    res.clearCookie("key");
+    mapper.delete(token);
+  }
+  next();
+}
 // proper authentication
 // logout button bhi bnana h
